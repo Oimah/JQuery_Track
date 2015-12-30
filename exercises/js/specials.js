@@ -14,7 +14,6 @@ getSpecials: function(){
   var parent = this;
   $("select#day").change(function(){
   var specialDay = $(this).val();
-  //alert(cachedJson.length)
   if(cachedJson.length === 0){
     $.ajax({
       method: 'Get',
@@ -28,7 +27,6 @@ getSpecials: function(){
       parent.putContent(data[specialDay])
     })
     .fail(function(jqXHR, textStatus){
-      //alert( "Request failed: " + textStatus );
     })
 }
   else
