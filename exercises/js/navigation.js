@@ -1,12 +1,23 @@
-$("ul#nav li").bind({
-  mouseenter:mouseEnter,
-  mouseleave:mouseOut
-})
+function CreateNavMenu(){
+  this.eventBinding()
+}
 
-function mouseEnter(){
+CreateNavMenu.prototype.eventBinding = function(){
+  var that = this;
+  $("ul#nav li").bind({
+    mouseenter:that.mouseEnter,
+    mouseleave:that.mouseOut
+  })
+}
+
+CreateNavMenu.prototype.mouseEnter = function(){
   $(this).find("ul").addClass("display_submenu");
 }
 
-function mouseOut(){
+CreateNavMenu.prototype.mouseOut = function(){
   $(this).find("ul").removeClass("display_submenu");
 }
+
+$(document).ready(function(){
+  new CreateNavMenu();
+})
